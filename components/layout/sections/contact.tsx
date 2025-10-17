@@ -89,7 +89,7 @@ export const ContactSection = () => {
                 <div className="font-bold">Suggest Improvements</div>
               </div>
               <div className="text-muted-foreground">
-                Have ideas for new features or better analysis? We'd love to hear them.
+                Have ideas for new features or better analysis? We would love to hear them.
               </div>
             </div>
 
