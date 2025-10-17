@@ -33,18 +33,15 @@ interface FeatureProps {
   description: string;
 }
 
+// Updated route list for Veritas
 const routeList: RouteProps[] = [
   {
-    href: "#testimonials",
-    label: "Testimonials",
+    href: "#how-it-works",
+    label: "How It Works",
   },
   {
-    href: "#team",
-    label: "Team",
-  },
-  {
-    href: "#contact",
-    label: "Contact",
+    href: "#features",
+    label: "Features",
   },
   {
     href: "#faq",
@@ -52,20 +49,19 @@ const routeList: RouteProps[] = [
   },
 ];
 
+// Updated feature list for Veritas
 const featureList: FeatureProps[] = [
   {
-    title: "Showcase Your Value ",
-    description: "Highlight how your product solves user problems.",
+    title: "Evidence-First Approach",
+    description: "See the sources and reasoning behind every verdict.",
   },
   {
-    title: "Build Trust",
-    description:
-      "Leverages social proof elements to establish trust and credibility.",
+    title: "Transparent Confidence",
+    description: "Understand uncertainty with clear confidence scores.",
   },
   {
-    title: "Capture Leads",
-    description:
-      "Make your lead capture form visually appealing and strategically.",
+    title: "Educational Focus",
+    description: "Learn what makes claims credible or suspicious.",
   },
 ];
 
@@ -75,7 +71,7 @@ export const Navbar = () => {
     <header className="shadow-inner bg-opacity-15 w-[90%] md:w-[70%] lg:w-[75%] lg:max-w-screen-xl top-5 mx-auto sticky border border-secondary z-40 rounded-2xl flex justify-between items-center p-2 bg-card">
       <Link href="/" className="font-bold text-lg flex items-center">
         <ChevronsDown className="bg-gradient-to-tr border-secondary from-primary via-primary/70 to-primary rounded-lg w-9 h-9 mr-2 border text-white" />
-        Shadcn
+        Veritas
       </Link>
       {/* <!-- Mobile --> */}
       <div className="flex items-center lg:hidden">
@@ -96,7 +92,7 @@ export const Navbar = () => {
                 <SheetTitle className="flex items-center">
                   <Link href="/" className="flex items-center">
                     <ChevronsDown className="bg-gradient-to-tr border-secondary from-primary via-primary/70 to-primary rounded-lg w-9 h-9 mr-2 border text-white" />
-                    Shadcn
+                    Veritas
                   </Link>
                 </SheetTitle>
               </SheetHeader>
@@ -113,12 +109,19 @@ export const Navbar = () => {
                     <Link href={href}>{label}</Link>
                   </Button>
                 ))}
+                {/* Add Analyze link for mobile */}
+                <Button
+                  onClick={() => setIsOpen(false)}
+                  asChild
+                  className="justify-start text-base bg-primary text-primary-foreground hover:bg-primary/90"
+                >
+                  <Link href="/analyze">Analyze Claims</Link>
+                </Button>
               </div>
             </div>
 
             <SheetFooter className="flex-col sm:flex-col justify-start items-start">
               <Separator className="mb-2" />
-
               <ToggleTheme />
             </SheetFooter>
           </SheetContent>
@@ -134,13 +137,13 @@ export const Navbar = () => {
             </NavigationMenuTrigger>
             <NavigationMenuContent>
               <div className="grid w-[600px] grid-cols-2 gap-5 p-4">
-                <Image
-                  src="https://avatars.githubusercontent.com/u/75042455?v=4"
-                  alt="RadixLogo"
-                  className="h-full w-full rounded-md object-cover"
-                  width={600}
-                  height={600}
-                />
+                {/* Replace with Veritas-related image or keep abstract */}
+                <div className="h-full w-full rounded-md bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
+                  <div className="text-center p-4">
+                    <ChevronsDown className="w-12 h-12 mx-auto mb-2 text-primary" />
+                    <p className="text-sm text-muted-foreground">Transparent Claim Verification</p>
+                  </div>
+                </div>
                 <ul className="flex flex-col gap-2">
                   {featureList.map(({ title, description }) => (
                     <li
@@ -163,22 +166,33 @@ export const Navbar = () => {
           <NavigationMenuItem>
             {routeList.map(({ href, label }) => (
               <NavigationMenuLink key={href} asChild>
-                <Link href={href} className="text-base px-2">
+                <Link href={href} className="text-base px-4">
                   {label}
                 </Link>
               </NavigationMenuLink>
             ))}
           </NavigationMenuItem>
+          
+          {/* Add Analyze CTA in desktop nav */}
+          <NavigationMenuItem>
+            <NavigationMenuLink asChild>
+              <Button asChild size="sm" className="ml-4">
+                <Link href="/analyze">
+                  Analyze Claims
+                </Link>
+              </Button>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
         </NavigationMenuList>
       </NavigationMenu>
 
-      <div className="hidden lg:flex">
+      <div className="hidden lg:flex items-center gap-2">
         <ToggleTheme />
 
         <Button asChild size="sm" variant="ghost" aria-label="View on GitHub">
           <Link
             aria-label="View on GitHub"
-            href="https://github.com/nobruf/shadcn-landing-page.git"
+            href="https://github.com/your-username/veritas" // Update with your repo
             target="_blank"
           >
             <Github className="size-5" />

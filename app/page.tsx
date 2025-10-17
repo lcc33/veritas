@@ -12,37 +12,37 @@ import { TeamSection } from "@/components/layout/sections/team";
 import { TestimonialSection } from "@/components/layout/sections/testimonial";
 
 export const metadata = {
-  title: "Shadcn - Landing template",
-  description: "Free Shadcn landing page for developers",
+  title: "Veritas - Transparent Claim Verification",
+  description: "Check claims in articles or text. Get evidence-based verdicts: Supported, Disputed, or Unclear.",
   openGraph: {
     type: "website",
-    url: "https://github.com/nobruf/shadcn-landing-page.git",
-    title: "Shadcn - Landing template",
-    description: "Free Shadcn landing page for developers",
+    url: "https://veritas-yourdomain.com",
+    title: "Veritas - Transparent Claim Verification",
+    description: "Check claims in articles or text. Get evidence-based verdicts with sources and explanations.",
     images: [
       {
-        url: "https://res.cloudinary.com/dbzv9xfjp/image/upload/v1723499276/og-images/shadcn-vue.jpg",
+        url: "/og-image.jpg", // You'll want to create this
         width: 1200,
         height: 630,
-        alt: "Shadcn - Landing template",
+        alt: "Veritas - Evidence-Based Claim Checking",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    site: "https://github.com/nobruf/shadcn-landing-page.git",
-    title: "Shadcn - Landing template",
-    description: "Free Shadcn landing page for developers",
+    site: "https://veritas-yourdomain.com",
+    title: "Veritas - Transparent Claim Verification",
+    description: "Check claims in articles or text. Get evidence-based verdicts with sources and explanations.",
     images: [
-      "https://res.cloudinary.com/dbzv9xfjp/image/upload/v1723499276/og-images/shadcn-vue.jpg",
+      "/og-image.jpg",
     ],
   },
 };
 
-export default function Home() {
+export default function LandingPage() {
   return (
     <>
-      <HeroSection />
+    <HeroSection />
       <SponsorsSection />
       <BenefitsSection />
       <FeaturesSection />
@@ -50,7 +50,7 @@ export default function Home() {
       <TestimonialSection />
       <TeamSection />
       <CommunitySection />
-      <PricingSection />
+      {/* <PricingSection /> */}
       <ContactSection />
       <FAQSection />
       <FooterSection />

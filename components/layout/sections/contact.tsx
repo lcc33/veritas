@@ -5,7 +5,7 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
-import { Building2, Clock, Mail, Phone } from "lucide-react";
+import { Bug, Mail, MessageSquare, Github } from "lucide-react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -29,140 +29,127 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 
 const formSchema = z.object({
-  firstName: z.string().min(2).max(255),
-  lastName: z.string().min(2).max(255),
-  email: z.string().email(),
-  subject: z.string().min(2).max(255),
-  message: z.string(),
+  name: z.string().min(2).max(255),
+  email: z.string().email().optional().or(z.literal('')),
+  issueType: z.string().min(2).max(255),
+  message: z.string().min(10, "Please provide at least 10 characters of detail"),
 });
 
 export const ContactSection = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      firstName: "",
-      lastName: "",
+      name: "",
       email: "",
-      subject: "Web Development",
+      issueType: "bug",
       message: "",
     },
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    const { firstName, lastName, email, subject, message } = values;
-    console.log(values);
+    const { name, email, issueType, message } = values;
+    
+    const subject = `[Veritas Feedback] ${issueType.toUpperCase()} - ${name}`;
+    const body = `Name: ${name}${email ? `\nEmail: ${email}` : ''}\nIssue Type: ${issueType}\n\nMessage:\n${message}\n\n---\nSent from Veritas Feedback Form`;
 
-    const mailToLink = `mailto:leomirandadev@gmail.com?subject=${subject}&body=Hello I am ${firstName} ${lastName}, my Email is ${email}. %0D%0A${message}`;
+    const mailToLink = `mailto:your-team@veritas.edu?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
     window.location.href = mailToLink;
   }
 
   return (
-    <section id="contact" className="container py-24 sm:py-32">
+    <section id="feedback" className="container py-24 sm:py-32">
       <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div>
           <div className="mb-4">
             <h2 className="text-lg text-primary mb-2 tracking-wider">
-              Contact
+              Feedback
             </h2>
 
-            <h2 className="text-3xl md:text-4xl font-bold">Connect With Us</h2>
+            <h2 className="text-3xl md:text-4xl font-bold">Help Us Improve</h2>
           </div>
           <p className="mb-8 text-muted-foreground lg:w-5/6">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum
-            ipsam sint enim exercitationem ex autem corrupti quas tenetur
+            Found an issue? Have suggestions? As a student project, your feedback helps us learn and improve Veritas. Report bugs, suggest features, or share your experience.
           </p>
 
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-6">
             <div>
               <div className="flex gap-2 mb-1">
-                <Building2 />
-                <div className="font-bold">Find us</div>
+                <Bug className="w-5 h-5" />
+                <div className="font-bold">Report Issues</div>
               </div>
-
-              <div>742 Evergreen Terrace, Springfield, IL 62704</div>
+              <div className="text-muted-foreground">
+                Found incorrect verdicts? Broken features? Let us know so we can fix them.
+              </div>
             </div>
 
             <div>
               <div className="flex gap-2 mb-1">
-                <Phone />
-                <div className="font-bold">Call us</div>
+                <MessageSquare className="w-5 h-5" />
+                <div className="font-bold">Suggest Improvements</div>
               </div>
-
-              <div>+1 (619) 123-4567</div>
+              <div className="text-muted-foreground">
+                Have ideas for new features or better analysis? We'd love to hear them.
+              </div>
             </div>
 
             <div>
               <div className="flex gap-2 mb-1">
-                <Mail />
-                <div className="font-bold">Mail US</div>
+                <Github className="w-5 h-5" />
+                <div className="font-bold">GitHub Issues</div>
               </div>
-
-              <div>leomirandadev@gmail.com</div>
+              <div className="text-muted-foreground">
+                Prefer GitHub? <a href="https://github.com/your-username/veritas/issues" target="_blank" className="text-primary hover:underline">Open an issue</a> on our repository for technical feedback.
+              </div>
             </div>
 
             <div>
-              <div className="flex gap-2">
-                <Clock />
-                <div className="font-bold">Visit us</div>
+              <div className="flex gap-2 mb-1">
+                <Mail className="w-5 h-5" />
+                <div className="font-bold">Quick Feedback</div>
               </div>
-
-              <div>
-                <div>Monday - Friday</div>
-                <div>8AM - 4PM</div>
+              <div className="text-muted-foreground">
+                Just want to say something worked well? We appreciate positive feedback too!
               </div>
             </div>
           </div>
         </div>
 
         <Card className="bg-muted/60 dark:bg-card">
-          <CardHeader className="text-primary text-2xl"> </CardHeader>
+          <CardHeader>
+            <h3 className="text-xl font-semibold">Send Us Feedback</h3>
+          </CardHeader>
           <CardContent>
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
                 className="grid w-full gap-4"
               >
-                <div className="flex flex-col md:!flex-row gap-8">
+                <div className="flex flex-col gap-4">
                   <FormField
                     control={form.control}
-                    name="firstName"
+                    name="name"
                     render={({ field }) => (
-                      <FormItem className="w-full">
-                        <FormLabel>First Name</FormLabel>
+                      <FormItem>
+                        <FormLabel>Your Name *</FormLabel>
                         <FormControl>
-                          <Input placeholder="Leopoldo" {...field} />
+                          <Input placeholder="John Smith" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
                     )}
                   />
-                  <FormField
-                    control={form.control}
-                    name="lastName"
-                    render={({ field }) => (
-                      <FormItem className="w-full">
-                        <FormLabel>Last Name</FormLabel>
-                        <FormControl>
-                          <Input placeholder="Miranda" {...field} />
-                        </FormControl>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
-
-                <div className="flex flex-col gap-1.5">
+                  
                   <FormField
                     control={form.control}
                     name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Email</FormLabel>
+                        <FormLabel>Email (Optional)</FormLabel>
                         <FormControl>
                           <Input
                             type="email"
-                            placeholder="leomirandadev@gmail.com"
+                            placeholder="john@example.com"
                             {...field}
                           />
                         </FormControl>
@@ -172,72 +159,64 @@ export const ContactSection = () => {
                   />
                 </div>
 
-                <div className="flex flex-col gap-1.5">
-                  <FormField
-                    control={form.control}
-                    name="subject"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Subject</FormLabel>
-                        <Select
-                          onValueChange={field.onChange}
-                          defaultValue={field.value}
-                        >
-                          <FormControl>
-                            <SelectTrigger>
-                              <SelectValue placeholder="Select a subject" />
-                            </SelectTrigger>
-                          </FormControl>
-                          <SelectContent>
-                            <SelectItem value="Web Development">
-                              Web Development
-                            </SelectItem>
-                            <SelectItem value="Mobile Development">
-                              Mobile Development
-                            </SelectItem>
-                            <SelectItem value="Figma Design">
-                              Figma Design
-                            </SelectItem>
-                            <SelectItem value="REST API">REST API</SelectItem>
-                            <SelectItem value="FullStack Project">
-                              FullStack Project
-                            </SelectItem>
-                          </SelectContent>
-                        </Select>
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
-
-                <div className="flex flex-col gap-1.5">
-                  <FormField
-                    control={form.control}
-                    name="message"
-                    render={({ field }) => (
-                      <FormItem>
-                        <FormLabel>Message</FormLabel>
+                <FormField
+                  control={form.control}
+                  name="issueType"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Feedback Type</FormLabel>
+                      <Select
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                      >
                         <FormControl>
-                          <Textarea
-                            rows={5}
-                            placeholder="Your message..."
-                            className="resize-none"
-                            {...field}
-                          />
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select feedback type" />
+                          </SelectTrigger>
                         </FormControl>
+                        <SelectContent>
+                          <SelectItem value="bug">Bug Report</SelectItem>
+                          <SelectItem value="incorrect-verdict">Incorrect Verdict</SelectItem>
+                          <SelectItem value="feature-request">Feature Request</SelectItem>
+                          <SelectItem value="ui-issue">UI/UX Issue</SelectItem>
+                          <SelectItem value="performance">Performance Issue</SelectItem>
+                          <SelectItem value="general">General Feedback</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-                        <FormMessage />
-                      </FormItem>
-                    )}
-                  />
-                </div>
+                <FormField
+                  control={form.control}
+                  name="message"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Details *</FormLabel>
+                      <FormControl>
+                        <Textarea
+                          rows={5}
+                          placeholder="Please describe the issue or suggestion in detail. For claim verification issues, include the text or URL you analyzed..."
+                          className="resize-none"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
 
-                <Button className="mt-4">Send message</Button>
+                <Button type="submit" className="mt-2">
+                  Send Feedback
+                </Button>
               </form>
             </Form>
           </CardContent>
 
-          <CardFooter></CardFooter>
+          <CardFooter className="text-xs text-muted-foreground">
+            <p>This is a student project. We appreciate your patience and feedback!</p>
+          </CardFooter>
         </Card>
       </section>
     </section>

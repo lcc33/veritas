@@ -1,51 +1,62 @@
 "use client";
-
 import { Icon } from "@/components/ui/icon";
 import { Marquee } from "@devnomic/marquee";
 import "@devnomic/marquee/dist/index.css";
 import { icons } from "lucide-react";
-interface sponsorsProps {
+
+interface sourceProps {
   icon: string;
   name: string;
+  type: string;
 }
 
-const sponsors: sponsorsProps[] = [
+const trustedSources: sourceProps[] = [
   {
-    icon: "Crown",
-    name: "Acmebrand",
+    icon: "BookOpen",
+    name: "Wikipedia",
+    type: "Reference"
   },
   {
-    icon: "Vegan",
-    name: "Acmelogo",
+    icon: "Newspaper",
+    name: "AP News",
+    type: "News"
   },
   {
-    icon: "Ghost",
-    name: "Acmesponsor",
+    icon: "FileText",
+    name: "Reuters",
+    type: "News"
   },
   {
-    icon: "Puzzle",
-    name: "Acmeipsum",
+    icon: "Scale",
+    name: "FactCheck.org",
+    type: "Fact Checker"
   },
   {
-    icon: "Squirrel",
-    name: "Acme",
+    icon: "SearchCheck",
+    name: "Snopes",
+    type: "Fact Checker"
   },
   {
-    icon: "Cookie",
-    name: "Accmee",
+    icon: "GraduationCap",
+    name: "Academic Journals",
+    type: "Research"
   },
   {
-    icon: "Drama",
-    name: "Acmetech",
+    icon: "Globe",
+    name: "BBC News",
+    type: "News"
   },
 ];
 
 export const SponsorsSection = () => {
   return (
-    <section id="sponsors" className="max-w-[75%] mx-auto pb-24 sm:pb-32">
-      <h2 className="text-lg md:text-xl text-center mb-6">
-        Our Platinum Sponsors
+    <section id="sources" className="max-w-[75%] mx-auto pb-24 sm:pb-32">
+      <h2 className="text-lg md:text-xl text-center mb-2">
+        Verified Against Trusted Sources
       </h2>
+      <p className="text-sm text-muted-foreground text-center mb-6">
+        Our AI cross-references claims with established fact-checkers and reputable news outlets
+      </p>
 
       <div className="mx-auto">
         <Marquee
@@ -54,16 +65,16 @@ export const SponsorsSection = () => {
           innerClassName="gap-[3rem]"
           pauseOnHover
         >
-          {sponsors.map(({ icon, name }) => (
+          {trustedSources.map(({ icon, name }) => (
             <div
               key={name}
-              className="flex items-center text-xl md:text-2xl font-medium"
+              className="flex items-center text-lg md:text-xl font-medium text-muted-foreground"
             >
               <Icon
                 name={icon as keyof typeof icons}
-                size={32}
-                color="white"
-                className="mr-2"
+                size={28}
+                color="currentColor"
+                className="mr-3 text-primary"
               />
               {name}
             </div>

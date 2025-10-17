@@ -10,28 +10,24 @@ interface BenefitsProps {
 
 const benefitList: BenefitsProps[] = [
   {
-    icon: "Blocks",
-    title: "Build Brand Trust",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. A odio velit cum aliquam. Natus consectetur dolores.",
+    icon: "SearchCheck",
+    title: "Evidence-Based Analysis",
+    description: "See the actual sources and reasoning behind every verdict, not just a label. Understand why claims are credible or suspicious.",
   },
   {
-    icon: "LineChart",
-    title: "More Leads",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. A odio velit cum aliquam, natus consectetur.",
+    icon: "GraduationCap",
+    title: "Build Critical Thinking",
+    description: "Learn to spot misleading claims yourself by understanding verification patterns and source credibility.",
   },
   {
-    icon: "Wallet",
-    title: "Higher Conversions",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus consectetur. A odio velit cum aliquam",
+    icon: "Shield",
+    title: "Transparent Confidence",
+    description: "Get clear confidence scores and understand uncertainty. We show you when evidence is strong or limited.",
   },
   {
-    icon: "Sparkle",
-    title: "Test Marketing Ideas",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. A odio velit cum aliquam. Natus consectetur dolores.",
+    icon: "Zap",
+    title: "Instant Verification",
+    description: "Paste any URL or text and get claim-level analysis in seconds. No accounts, no setup, just results.",
   },
 ];
 
@@ -40,15 +36,13 @@ export const BenefitsSection = () => {
     <section id="benefits" className="container py-24 sm:py-32">
       <div className="grid lg:grid-cols-2 place-items-center lg:gap-24">
         <div>
-          <h2 className="text-lg text-primary mb-2 tracking-wider">Benefits</h2>
+          <h2 className="text-lg text-primary mb-2 tracking-wider">Why Veritas</h2>
 
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Your Shortcut to Success
+            Verify with Confidence
           </h2>
           <p className="text-xl text-muted-foreground mb-8">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Non
-            ducimus reprehenderit architecto rerum similique facere odit
-            deleniti necessitatibus quo quae.
+            Unlike traditional fact-checkers, we show you the evidence and teach you how to think critically about information—not just what to think.
           </p>
         </div>
 
