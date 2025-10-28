@@ -5,7 +5,6 @@ import { FAQSection } from "@/components/layout/sections/faq";
 import { FeaturesSection } from "@/components/layout/sections/features";
 import { FooterSection } from "@/components/layout/sections/footer";
 import { HeroSection } from "@/components/layout/sections/hero";
-import { PricingSection } from "@/components/layout/sections/pricing";
 import { ServicesSection } from "@/components/layout/sections/services";
 import { SponsorsSection } from "@/components/layout/sections/sponsors";
 import { TeamSection } from "@/components/layout/sections/team";
@@ -16,7 +15,7 @@ export const metadata = {
   description: "Check claims in articles or text. Get evidence-based verdicts: Supported, Disputed, or Unclear.",
   openGraph: {
     type: "website",
-    url: "https://veritas-yourdomain.com",
+    url: "http://veritas-beryl.vercel.app",
     title: "Veritas - Transparent Claim Verification",
     description: "Check claims in articles or text. Get evidence-based verdicts with sources and explanations.",
     images: [
@@ -30,7 +29,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "https://veritas-yourdomain.com",
+    site: "http://veritas-beryl.vercel.app",
     title: "Veritas - Transparent Claim Verification",
     description: "Check claims in articles or text. Get evidence-based verdicts with sources and explanations.",
     images: [
@@ -50,7 +49,6 @@ export default function LandingPage() {
       <TestimonialSection />
       <TeamSection />
       <CommunitySection />
-      {/* <PricingSection /> */}
       <ContactSection />
       <FAQSection />
       <FooterSection />

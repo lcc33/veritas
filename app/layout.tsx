@@ -33,14 +33,14 @@ export const metadata: Metadata = {
     address: false,
     telephone: false,
   },
-  metadataBase: new URL('https://veritas-yourdomain.com'), // Update with your domain
+  metadataBase: new URL('http://veritas-beryl.vercel.app'),
   alternates: {
     canonical: '/',
   },
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://veritas-yourdomain.com",
+    url: "http://veritas-beryl.vercel.app",
     title: "Veritas - Transparent Claim Verification",
     description: "Check claims in articles or text. Get evidence-based verdicts with sources and explanations.",
     siteName: "Veritas",
@@ -107,7 +107,7 @@ export default function RootLayout({
               "@type": "WebApplication",
               "name": "Veritas",
               "description": "Transparent claim verification tool that analyzes articles and text to provide evidence-based verdicts.",
-              "url": "https://veritas-yourdomain.com",
+              "url": "http://veritas-beryl.vercel.app",
               "applicationCategory": "UtilityApplication",
               "operatingSystem": "Any",
               "permissions": "browser",
