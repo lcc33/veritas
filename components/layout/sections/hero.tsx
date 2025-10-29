@@ -47,7 +47,7 @@ export const HeroSection = () => {
               variant="secondary"
               className="w-5/6 md:w-1/4 font-bold"
             >
-              <Link href="#how-it-works">
+              <Link href="#feautures">
                 How It Works
                 <Shield className="size-5 ml-2" />
               </Link>

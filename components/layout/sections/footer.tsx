@@ -1,6 +1,7 @@
 import { Separator } from "@/components/ui/separator";
-import { ChevronsDownIcon, Github, Mail, BookOpen } from "lucide-react";
+import { Mail, Github, BookOpen } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 export const FooterSection = () => {
   const currentYear = new Date().getFullYear();
@@ -11,7 +12,13 @@ export const FooterSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-8">
           <div className="col-span-full lg:col-span-2">
             <Link href="/" className="flex font-bold items-center mb-4">
-              <ChevronsDownIcon className="w-9 h-9 mr-2 bg-gradient-to-tr from-primary via-primary/70 to-primary rounded-lg border border-secondary" />
+              <Image
+                src="/logo.png"
+                alt="Veritas Logo"
+                width={36}
+                height={36}
+                className="bg-gradient-to-tr border-secondary from-primary via-primary/70 to-primary rounded-lg w-9 h-9 mr-2 border text-white"
+              />
               <h3 className="text-2xl">Veritas</h3>
             </Link>
             <p className="text-muted-foreground max-w-md">

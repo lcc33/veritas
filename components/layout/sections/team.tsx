@@ -1,3 +1,4 @@
+// components/TeamSection.tsx
 import GithubIcon from "@/components/icons/github-icon";
 import LinkedInIcon from "@/components/icons/linkedin-icon";
 import XIcon from "@/components/icons/x-icon";
@@ -11,217 +12,206 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 
-interface TeamProps {
+interface SocialNetwork {
+  name: "LinkedIn" | "Github" | "X";
+  url: string;
+}
+
+interface TeamMember {
   imageUrl: string;
   firstName: string;
   lastName: string;
   positions: string[];
-  socialNetworks: SocialNetworkProps[];
-}
-
-interface SocialNetworkProps {
-  name: string;
-  url: string;
+  socialNetworks: SocialNetwork[];
+  /** optional – used only for the lead card */
+  description?: string;
 }
 
 export const TeamSection = () => {
-  const teamList: TeamProps[] = [
+  const teamList: TeamMember[] = [
     {
-      imageUrl: "https://www.pinterest.com/pin/426293921019889069/", // Add your image
-      firstName: "Your",
-      lastName: "Name",
+      imageUrl:
+        "https://i.pinimg.com/736x/64/65/57/646557efd44fa2d99be6cf2af79be8e6.jpg",
+      firstName: "Muhammad",
+      lastName: "Is'haq",
       positions: ["Fullstack Developer", "Project Lead"],
+      description:
+        "Leading the development of Veritas with a focus on transparent, evidence-based claim verification",
       socialNetworks: [
-        {
-          name: "LinkedIn",
-          url: "https://linkedin.com/in/yourprofile",
-        },
-        {
-          name: "Github",
-          url: "https://github.com/yourusername",
-        },
-        {
-          name: "X",
-          url: "https://x.com/yourhandle",
-        },
+        { name: "LinkedIn", url: "https://linkedin.com/in/yourprofile" },
+        { name: "Github", url: "https://github.com/yourusername" },
+        { name: "X", url: "https://x.com/yourhandle" },
       ],
     },
     {
-      imageUrl: "https://www.pinterest.com/pin/426293921019889069/",
-      firstName: "Frontend",
-      lastName: "Developer 1",
+      imageUrl: "https://i.pinimg.com/736x/68/80/07/688007906b540c10e6a168eea8d223ee.jpg", // replace with real image
+      firstName: "Muhktar",
+      lastName: "Yagboyaju",
       positions: ["Frontend Developer", "UI/UX"],
       socialNetworks: [
-        {
-          name: "LinkedIn",
-          url: "https://linkedin.com/in/frontend1",
-        },
-        {
-          name: "Github",
-          url: "https://github.com/frontend1",
-        },
+        { name: "LinkedIn", url: "https://linkedin.com/in/frontend1" },
+        { name: "Github", url: "https://github.com/frontend1" },
       ],
     },
     {
-      imageUrl: "https://www.pinterest.com/pin/426293921019889069/",
-      firstName: "Frontend",
-      lastName: "Developer 2",
+      imageUrl: "https://i.pinimg.com/736x/68/80/07/688007906b540c10e6a168eea8d223ee.jpg",
+      firstName: "Opulent",
+      lastName: "",
       positions: ["Frontend Developer", "React Specialist"],
       socialNetworks: [
-        {
-          name: "LinkedIn",
-          url: "https://linkedin.com/in/frontend2",
-        },
-        {
-          name: "Github",
-          url: "https://github.com/frontend2",
-        },
+        { name: "LinkedIn", url: "https://linkedin.com/in/frontend2" },
+        { name: "Github", url: "https://github.com/frontend2" },
       ],
     },
     {
-      imageUrl: "https://www.pinterest.com/pin/426293921019889069/",
-      firstName: "Backend",
-      lastName: "Developer",
+      imageUrl: "https://i.pinimg.com/736x/68/80/07/688007906b540c10e6a168eea8d223ee.jpg",
+      firstName: "AbdulMuiz",
+      lastName: "",
       positions: ["Backend Developer", "API Architecture"],
       socialNetworks: [
-        {
-          name: "LinkedIn",
-          url: "https://linkedin.com/in/backend",
-        },
-        {
-          name: "Github",
-          url: "https://github.com/backend",
-        },
+        { name: "LinkedIn", url: "https://linkedin.com/in/backend" },
+        { name: "Github", url: "https://github.com/backend" },
       ],
     },
     {
-      imageUrl: "https://www.pinterest.com/pin/426293921019889069/",
-      firstName: "Product",
-      lastName: "Manager",
+      imageUrl: "https://i.pinimg.com/736x/68/80/07/688007906b540c10e6a168eea8d223ee.jpg",
+      firstName: "Ayodele",
+      lastName: "Ogunyemi",
       positions: ["Product Manager", "User Research"],
       socialNetworks: [
-        {
-          name: "LinkedIn",
-          url: "https://linkedin.com/in/pm",
-        },
-        {
-          name: "X",
-          url: "https://x.com/pmhandle",
-        },
+        { name: "LinkedIn", url: "https://linkedin.com/in/pm" },
+        { name: "X", url: "https://x.com/pmhandle" },
       ],
     },
   ];
 
-  const socialIcon = (socialName: string) => {
-    switch (socialName) {
+  const socialIcon = (name: SocialNetwork["name"]) => {
+    switch (name) {
       case "LinkedIn":
-        return <LinkedInIcon />;
+        return <LinkedInIcon className="h-5 w-5" />;
       case "Github":
-        return <GithubIcon />;
+        return <GithubIcon className="h-5 w-5" />;
       case "X":
-        return <XIcon />;
+        return <XIcon className="h-5 w-5" />;
     }
   };
 
-  return (
-    <section id="team" className="container lg:w-[75%] py-24 sm:py-32">
-      <div className="text-center mb-8">
-        <h2 className="text-lg text-primary text-center mb-2 tracking-wider">
-          Our Team
-        </h2>
+  const lead = teamList[0];
+  const others = teamList.slice(1);
 
-        <h2 className="text-3xl md:text-4xl text-center font-bold mb-4">
+  return (
+    <section id="team" className="container mx-auto py-12 sm:py-20 lg:py-28">
+      {/* Header */}
+      <div className="text-center mb-12">
+        <p className="text-sm font-medium tracking-widest text-primary uppercase">
+          Our Team
+        </p>
+        <h2 className="mt-2 text-3xl sm:text-4xl font-bold">
           Building Veritas
         </h2>
-        <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-          A dedicated team of students passionate about transparency, technology, and fighting misinformation
+        <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
+          A dedicated team of students passionate about transparency,
+          technology, and fighting misinformation
         </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8 justify-items-center">
-        {/* Your card - centered and slightly emphasized */}
-        <Card className="bg-muted/60 dark:bg-card flex flex-col h-full overflow-hidden group/hoverimg col-span-full sm:col-span-2 lg:col-span-3 xl:col-span-3 max-w-md">
-          <CardHeader className="p-0 gap-0">
-            <div className="h-full overflow-hidden">
+      {/* Cards Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 justify-items-center">
+        {/* ---------- Lead Card (always centered, spans appropriately) ---------- */}
+        <Card
+          className="col-span-full sm:col-span-2 lg:col-span-3 xl:col-span-2
+                     bg-muted/60 dark:bg-card flex flex-col overflow-hidden
+                     group/hoverimg w-full max-w-md mx-auto"
+        >
+          <CardHeader className="p-0">
+            <div className="overflow-hidden">
               <Image
-                src="/team/placeholder-male.jpg"
-                alt="Your Name - Fullstack Developer"
-                width={300}
-                height={300}
-                className="w-full aspect-square object-cover saturate-0 transition-all duration-200 ease-linear size-full group-hover/hoverimg:saturate-100 group-hover/hoverimg:scale-[1.01]"
+                src={lead.imageUrl}
+                alt={`${lead.firstName} ${lead.lastName}`}
+                width={600}
+                height={600}
+                className="aspect-square w-full object-cover saturate-0 transition-all duration-300
+                           group-hover/hoverimg:saturate-100 group-hover/hoverimg:scale-[1.02]"
               />
             </div>
-            <CardTitle className="py-6 pb-4 px-6 text-center">
-              Your Name
-              <span className="block text-lg text-primary font-normal mt-1">Fullstack Developer & Project Lead</span>
+            <CardTitle className="px-6 pt-6 pb-2 text-center">
+              {lead.firstName} {lead.lastName}
+              <span className="block mt-1 text-lg font-normal text-primary">
+                {lead.positions.join(" & ")}
+              </span>
             </CardTitle>
           </CardHeader>
-          <CardContent className="text-center text-muted-foreground pb-6">
-            Leading the development of Veritas with a focus on transparent, evidence-based claim verification
-          </CardContent>
-          <CardFooter className="space-x-4 mt-auto justify-center">
-            {teamList[0].socialNetworks.map(({ name, url }, index) => (
+
+          {lead.description && (
+            <CardContent className="px-6 pb-4 text-center text-muted-foreground">
+              {lead.description}
+            </CardContent>
+          )}
+
+          <CardFooter className="mt-auto justify-center space-x-4 pb-6">
+            {lead.socialNetworks.map((sn, i) => (
               <Link
-                key={index}
-                href={url}
+                key={i}
+                href={sn.url}
                 target="_blank"
-                className="hover:opacity-80 transition-all"
+                rel="noopener noreferrer"
+                className="transition-opacity hover:opacity-70"
               >
-                {socialIcon(name)}
+                {socialIcon(sn.name)}
               </Link>
             ))}
           </CardFooter>
         </Card>
 
-        {/* Rest of the team in a grid below */}
-        {teamList.slice(1).map(
-          (
-            { imageUrl, firstName, lastName, positions, socialNetworks },
-            index
-          ) => (
-            <Card
-              key={index}
-              className="bg-muted/60 dark:bg-card flex flex-col h-full overflow-hidden group/hoverimg w-full max-w-sm"
-            >
-              <CardHeader className="p-0 gap-0">
-                <div className="h-full overflow-hidden">
-                  <Image
-                    src={imageUrl}
-                    alt={`${firstName} ${lastName}`}
-                    width={300}
-                    height={300}
-                    className="w-full aspect-square object-cover saturate-0 transition-all duration-200 ease-linear size-full group-hover/hoverimg:saturate-100 group-hover/hoverimg:scale-[1.01]"
-                  />
-                </div>
-                <CardTitle className="py-6 pb-4 px-6 text-center">
-                  {firstName} {lastName}
-                </CardTitle>
-              </CardHeader>
-              {positions.map((position, index) => (
-                <CardContent
-                  key={index}
-                  className={`text-center text-muted-foreground ${
-                    index === positions.length - 1 ? "pb-6" : "pb-0"
-                  }`}
+        {/* ---------- Other Team Members ---------- */}
+        {others.map((member, idx) => (
+          <Card
+            key={idx}
+            className="bg-muted/60 dark:bg-card flex flex-col overflow-hidden
+                       group/hoverimg w-full max-w-sm"
+          >
+            <CardHeader className="p-0">
+              <div className="overflow-hidden">
+                <Image
+                  src={member.imageUrl}
+                  alt={`${member.firstName} ${member.lastName}`}
+                  width={400}
+                  height={400}
+                  className="aspect-square w-full object-cover saturate-0 transition-all duration-300
+                             group-hover/hoverimg:saturate-100 group-hover/hoverimg:scale-[1.02]"
+                />
+              </div>
+              <CardTitle className="px-6 pt-6 pb-2 text-center">
+                {member.firstName} {member.lastName}
+              </CardTitle>
+            </CardHeader>
+
+            {member.positions.map((pos, i) => (
+              <CardContent
+                key={i}
+                className={`px-6 text-center text-muted-foreground ${
+                  i === member.positions.length - 1 ? "pb-4" : "pb-0"
+                }`}
+              >
+                {pos}
+              </CardContent>
+            ))}
+
+            <CardFooter className="mt-auto justify-center space-x-4 pb-6">
+              {member.socialNetworks.map((sn, i) => (
+                <Link
+                  key={i}
+                  href={sn.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:opacity-80 transition-all"
                 >
-                  {position}
-                </CardContent>
+                  {socialIcon(sn.name)}
+                </Link>
               ))}
-              <CardFooter className="space-x-4 mt-auto justify-center">
-                {socialNetworks.map(({ name, url }, index) => (
-                  <Link
-                    key={index}
-                    href={url}
-                    target="_blank"
-                    className="hover:opacity-80 transition-all"
-                  >
-                    {socialIcon(name)}
-                  </Link>
-                ))}
-              </CardFooter>
-            </Card>
-          )
-        )}
+            </CardFooter>
+          </Card>
+        ))}
       </div>
     </section>
   );
