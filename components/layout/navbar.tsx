@@ -1,5 +1,5 @@
 "use client";
-import { ChevronsDown, Github, Menu } from "lucide-react";
+import {  Github, Menu } from "lucide-react";
 import React from "react";
 import {
   Sheet,
@@ -75,7 +75,7 @@ export const Navbar = () => {
           alt="Veritas Logo"
           width={36}
           height={36}
-          className="bg-gradient-to-tr border-secondary from-primary via-primary/70 to-primary rounded-lg w-9 h-9 mr-2 border text-white"
+          className="bg-white border-secondary from-primary via-primary/70 to-primary rounded-lg w-9 h-9 mr-2 border text-white"
         />
         Veritas
       </Link>
@@ -212,7 +212,7 @@ export const Navbar = () => {
         <Button asChild size="sm" variant="ghost" aria-label="View on GitHub">
           <Link
             aria-label="View on GitHub"
-            href="https://github.com/your-username/veritas" // Update with your repo
+            href="https://github.com/lcc33/veritas"
             target="_blank"
           >
             <Github className="size-5" />

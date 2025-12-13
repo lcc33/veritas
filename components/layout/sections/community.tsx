@@ -38,7 +38,7 @@ export const CommunitySection = () => {
                 </a>
               </Button>
               <Button asChild variant="outline" className="gap-2">
-                <a href="https://github.com/your-username/veritas/issues" target="_blank">
+                <a href="https://github.com/lcc33/veritas/issues" target="_blank">
                   <Users className="w-4 h-4" />
                   Report Issues
                 </a>

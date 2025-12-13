@@ -20,7 +20,7 @@ export const metadata = {
     description: "Check claims in articles or text. Get evidence-based verdicts with sources and explanations.",
     images: [
       {
-        url: "/og-image.jpg", // You'll want to create this
+        url: "/og.png", // You'll want to create this
         width: 1200,
         height: 630,
         alt: "Veritas - Evidence-Based Claim Checking",
@@ -33,7 +33,7 @@ export const metadata = {
     title: "Veritas - Transparent Claim Verification",
     description: "Check claims in articles or text. Get evidence-based verdicts with sources and explanations.",
     images: [
-      "/og-image.jpg",
+      "/og.png",
     ],
   },
 };

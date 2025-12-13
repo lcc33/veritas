@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     siteName: "Veritas",
     images: [
       {
-        url: "/og-image.jpg", // Create this image
+        url: "/og.png", // Create this image
         width: 1200,
         height: 630,
         alt: "Veritas - Evidence-Based Claim Checking Tool",
@@ -57,7 +57,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Veritas - Transparent Claim Verification",
     description: "Check claims in articles or text. Get evidence-based verdicts with sources and explanations.",
-    images: ["/og-image.jpg"],
+    images: ["/og.png"],
     creator: "@veritas", // Update with your handle
   },
   robots: {
